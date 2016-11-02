@@ -1,0 +1,24 @@
+{
+  "name": "workshop04",
+  "homepage": "https://github.com/chukmunnlee/beauj",
+  "authors": [
+    "Chuk <chukmunnlee@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {"chessboard.js":"0.3.2",
+    "angular": "angularjs#^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap": "^3.3.7",
+    "chessboardjs": "chessboard.js#0.3.2"
+  }
+}
