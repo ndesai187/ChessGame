@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html ng-app="CustomerApp">
+	<head>
+		<title>TODO supply a title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+
+		<script src="index.js"></script>
+		
+	</head>
+	<body ng-controller="CustomerCtrl as customerCtrl">
+		<div class="container">
+
+			<h1>Customer</h1>
+
+			<form>
+
+				<div class="form-group" 
+					 ng-class="{'has-success': customerCtrl.found, 'has-error': customerCtrl.notFound}">
+					<label for="custId">Customer Id</label>
+					<div class="input-group">
+						<input type="text" id="custId" class="form-control" 
+							   ng-model="customerCtrl.customer.custId">
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default" 
+									ng-class="{'btn-danger': customerCtrl.notFound, 'btn-success': customerCtrl.found }"
+									ng-click="customerCtrl.find()">
+								Find
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="addr1">Name:</label>
+					<input id="addr1" type="text" class="form-control" 
+						   ng-model="customerCtrl.customer.name">
+				</div>
+
+				<div class="form-group">
+					<label for="addr1">Address-1:</label>
+					<input id="addr1" type="text" class="form-control" 
+						   ng-model="customerCtrl.customer.addr1">
+				</div>
+
+				<div class="form-group">
+					<label for="addr2">Address-2:</label>
+					<input id="addr2" type="text" class="form-control"
+						   ng-model="customerCtrl.customer.addr2">
+				</div>
+
+				<div class="form-group">
+					<label for="city">City:</label>
+					<input id="city" type="text" class="form-control"
+						   ng-model="customerCtrl.customer.city">
+				</div>
+
+				<div class="form-group">
+					<label for="city">ZIP:</label>
+					<select class="form-control"
+						   ng-model="customerCtrl.customer.zip">
+						<option value="95051">95051</option>
+						<option value="94043">94043</option>
+						<option value="85638">85638</option>
+						<option value="12347">12347</option>
+						<option value="94401">94401</option>
+						<option value="95035">95035</option>
+						<option value="95117">95117</option>
+						<option value="48128">48128</option>
+						<option value="48124">48124</option>
+						<option value="10095">10095</option>
+						<option value="10069">10069</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="state">State (2 char):</label>
+					<input id="state" type="text" class="form-control"
+						   ng-model="customerCtrl.customer.state">
+				</div>
+
+				<div class="form-group">
+					<label for="phone">Phone:</label>
+					<input id="phone" type="tel" class="form-control"
+						   ng-model="customerCtrl.customer.phone">
+				</div>
+
+				<div class="form-group">
+					<label for="fax">Fax:</label>
+					<input id="Fax" type="tel" class="form-control"
+						   ng-model="customerCtrl.customer.fax">
+				</div>
+
+				<div class="form-group">
+					<label for="email">Email:</label>
+					<input id="email" type="email" class="form-control"
+						   ng-model="customerCtrl.customer.email">
+				</div>
+
+				<div class="form-group">
+					<label for="discount">Discount Code:</label>
+					<select class="form-control"
+						   ng-model="customerCtrl.customer.discount">
+						<option value="H">H</option>
+						<option value="L">L</option>
+						<option value="M">M</option>
+						<option value="N">N</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="credit">Credit Limit:</label>
+					<div class="input-group">
+						<span class="input-group-addon">$</span>
+						<input id="credit" type="number" class="form-control"
+							   ng-model="customerCtrl.customer.credit">
+						<span class="input-group-addon">.00</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<button class="btn btn-warning form-control" ng-click="customerCtrl.add()">
+						Add
+					</button>
+				</div>
+
+			</form>
+
+		</div>
+	</body>
+</html>

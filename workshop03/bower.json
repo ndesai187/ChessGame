@@ -1,0 +1,22 @@
+{
+  "name": "workshop03",
+  "homepage": "https://github.com/chukmunnlee/beauj",
+  "authors": [
+    "Chuk <chukmunnlee@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.5.8",
+    "bootstrap": "^3.3.7"
+  }
+}
