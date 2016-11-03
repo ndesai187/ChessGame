@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+		<h1>Checkout</h1>
+
+		<h2>Hello <h:outputText value="#{checkoutView.name}"/></h2>
+
+		<h2>Your purchases today</h2>
+
+		<h:form>
+
+			<h:dataTable var="f" value="#{basket.basket}">
+				<h:column>
+					<h:graphicImage value="images/fruits/#{f.name}.png" style="width:64px;"/>
+					<f:facet name="footer">
+						<h:outputText value="Items: #{basket.getBasket().size()}"/>
+					</f:facet>
+				</h:column>
+				<h:column>
+					<h:outputText value="#{f.name} (#{f.quantity})"/>
+				</h:column>
+			</h:dataTable>
+
+			<h:panelGrid columns="2">
+				<h:commandButton value="Back to Shop" action="/index?faces-redirect=true"/>
+				<h:commandButton value="Checkout" action="#{checkoutView.performCheckout()}"/>
+			</h:panelGrid>
+
+		</h:form>
+
+    </h:body>
+</html>
+

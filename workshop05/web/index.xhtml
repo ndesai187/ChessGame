@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+		<h1>Welcome to E-Mart</h1>
+
+		<h:form>
+			<h:commandButton value="View Basket" action="basket" 
+					 rendered="#{basket.getBasket().size() gt 0}"/>
+
+			<h:panelGrid columns="3">
+				<c:forEach var="f" items="#{fruit.fruits()}">
+					<h:panelGroup style="padding:50px;">
+						<h:graphicImage value="images/fruits/#{f.name}.png" style="width:64px;"/>
+						<h:commandButton value="#{f.name}" action="#{basket.addToBasket(f)}"/>
+					</h:panelGroup>
+				</c:forEach>
+			</h:panelGrid>
+
+
+		</h:form>
+    </h:body>
+</html>
+
