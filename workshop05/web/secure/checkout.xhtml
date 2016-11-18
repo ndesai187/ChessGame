@@ -17,7 +17,7 @@
 
 			<h:dataTable var="f" value="#{basket.basket}">
 				<h:column>
-					<h:graphicImage value="images/fruits/#{f.name}.png" style="width:64px;"/>
+					<h:graphicImage value="../images/fruits/#{f.name}.png" style="width:64px;"/>
 					<f:facet name="footer">
 						<h:outputText value="Items: #{basket.getBasket().size()}"/>
 					</f:facet>
