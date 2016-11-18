@@ -69,11 +69,11 @@
 			customerCtrl.notFound = false;
 			CustomerSvc.addCustomer(customerCtrl.customer)
 				.then(function() {
-					alert("Added");
+					alert("Added customer " + customerCtrl.customer.custId);
 					customerCtrl.found = true;
 				}).catch(function(error) {
 					customerCtrl.notfound = true;
-					alert("Error: " + error);
+					alert("Error: " + JSON.stringify(error));
 				});
 		}
 	};
