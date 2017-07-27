@@ -1,9 +1,15 @@
 package ws.webSocket;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
@@ -27,7 +33,24 @@ public class GameSocket {
         Optional<List<Session>> opt = activeGamses.getGame(gameId);
         List<Session> players = opt.get();
         players.add(session);
-    
     }
     
+    @OnMessage
+    public void message(String msg){
+        
+        System.out.println(">>> Broadcasting... ");
+        System.out.println(">>> msg : " + msg);
+
+        Optional<List<Session>> opt = activeGamses.getGame(gameId);
+        List<Session> players = opt.get();
+        
+        for (Session s: players){
+            try {
+                s.getBasicRemote().sendText(msg);
+            } catch (Exception ex) {
+                try { s.close(); } catch (Exception e) { }
+            }
+        } 
+        
+    }
 }
