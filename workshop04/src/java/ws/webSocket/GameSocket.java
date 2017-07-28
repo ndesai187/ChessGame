@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Resource;
+import javax.enterprise.concurrent.ManagedScheduledExecutorService;
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.json.Json;
@@ -21,6 +23,9 @@ import ws4.model.ChessActiveGames;
 public class GameSocket {
     
     @Inject private ChessActiveGames activeGamses;
+    
+    @Resource(name = "DefaultManagedScheduledExecutorService")   
+    private ManagedScheduledExecutorService service;
     
     private String gameId = null;
     private Session session = null;
@@ -44,6 +49,11 @@ public class GameSocket {
         Optional<List<Session>> opt = activeGamses.getGame(gameId);
         List<Session> players = opt.get();
         
+        BroadcastMove move = new BroadcastMove(msg, players);
+        service.submit(move);
+        
+        /* 
+        //commented and replaced with Threading
         for (Session s: players){
             try {
                 s.getBasicRemote().sendText(msg);
@@ -51,6 +61,6 @@ public class GameSocket {
                 try { s.close(); } catch (Exception e) { }
             }
         } 
-        
+        */
     }
 }
